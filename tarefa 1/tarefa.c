@@ -8,7 +8,7 @@ int main() {
     printf("Digite uma string: ");
     fgets(string, sizeof(string), stdin);
 
-    int tamanho = strlen(string) - 1; // Desconsiderar o caractere de nova linha
+    int tamanho = strlen(string) - 1; 
     char inversa[tamanho + 1];
 
     char *ptr = string + tamanho - 1;
