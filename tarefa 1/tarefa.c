@@ -1,3 +1,5 @@
+//vitor zulmar da silva//
+//inversor de strings//
 #include <stdio.h>
 #include <string.h>
 
