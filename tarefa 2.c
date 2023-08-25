@@ -10,7 +10,7 @@ struct User {
 
 int main() {
    
-    FILE *file = fopen("database.dat", "r");
+    FILE *file = fopen("database.dat", "rb");
     if (file == NULL) {
         perror("Erro ao abrir o arquivo");
         return 1;
