@@ -4,7 +4,7 @@
 
 void para_demorar() {
     printf("Pressione ENTER para prosseguir\n");
-    while (getchar() != '\n'); // Limpa o buffer de entrada
+    while (getchar() != '\n'); 
 }
 
 struct User {
