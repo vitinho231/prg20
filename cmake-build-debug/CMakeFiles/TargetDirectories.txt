@@ -1,3 +1,0 @@
-/home/vitor/CLionProjects/prg029003/cmake-build-debug/CMakeFiles/prg029003.dir
-/home/vitor/CLionProjects/prg029003/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/vitor/CLionProjects/prg029003/cmake-build-debug/CMakeFiles/rebuild_cache.dir
