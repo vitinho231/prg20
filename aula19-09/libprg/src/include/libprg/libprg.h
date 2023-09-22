@@ -1,24 +1,20 @@
-#ifndef LIBPRG_LIBPRG_H
-#define LIBPRG_LIBPRG_H
+// libprg.h
 
-typedef struct {
-    double value;
-    int error;
-} result_t;
+#ifndef LIBPRG_H
+#define LIBPRG_H
 
-typedef struct {
-    int *valores;
-    int tam_max;
-    int n_elem;
+struct Lista {
+    int* elementos;
+    int tamanho;
+};
 
-} Lista;
-
-void cria_lista(Lista *lista, int tam_max)
-
-typedef enum { SUM, SUB } operation_t;
-
-result_t sub(double a, double b);
-result_t sum(double a, double b);
-result_t compute(double a, double b, operation_t op);
+void inicializaLista(struct Lista* lista, int tamanhoMax);
+int insereElemento(struct Lista* lista, int valor);
+int removeElemento(struct Lista* lista, int valor);
+void exibeLista(struct Lista* lista);
+int buscaLinear(struct Lista* lista, int valor);
+int buscaBinariaIterativa(struct Lista* lista, int valor);
+int buscaBinariaRecursiva(struct Lista* lista, int valor, int inicio, int fim);
 
 #endif
+
