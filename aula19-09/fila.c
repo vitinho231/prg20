@@ -2,4 +2,4 @@
 #include <stdlib.h>
 #include "libprg.h"
 
-void imprime_fila(Fila *fila)
+void imprime_fila(struct Fila *fila)
