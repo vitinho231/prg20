@@ -91,3 +91,25 @@ int buscaBinariaRecursiva(struct Lista* lista, int valor, int inicio, int fim) {
         return buscaBinariaRecursiva(lista, valor, inicio, meio - 1);
     }
 }
+
+int main() {
+    struct Lista minhaLista;
+    int tamanhoMax = 10; // Tamanho máximo da lista
+
+    inicializaLista(&minhaLista, tamanhoMax);
+
+    // Exibindo a lista vazia
+    printf("Lista vazia:\n");
+    exibeLista(&minhaLista);
+
+    // Inserindo elementos na lista
+    insereElemento(&minhaLista, 5);
+    insereElemento(&minhaLista, 3);
+    insereElemento(&minhaLista, 8);
+
+    // Exibindo a lista após a inserção
+    printf("\nLista após inserção:\n");
+    exibeLista(&minhaLista);
+
+    // Remov
+
