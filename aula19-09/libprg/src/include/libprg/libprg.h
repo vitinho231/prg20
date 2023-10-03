@@ -39,6 +39,7 @@ typedef struct {
 }Pilha;
 
 void cria_pilha(Pilha *pilha, int capacidade);
+void imprime_pilha(Pilha *pilha);
 void empilhar(Pilha *pilha);
 void desempilhar(Pilha *pilha);
 void tamanho(Pilha *pilha);

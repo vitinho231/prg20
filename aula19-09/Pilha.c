@@ -8,6 +8,19 @@ void cria_pilha(Pilha *pilha, int capacidade) {
     pilha->capacidade = capacidade;
 }
 
+
+void imprime_pilha(Pilha *pilha) {
+    if (pilha->topo == -1) {
+        printf("A pilha está vazia. Nada para imprimir.\n");
+    } else {
+        printf("Elementos da pilha:\n");
+        for (int i = 0; i <= pilha->topo; i++) {
+            printf("%d ", pilha->valores[i]);
+        }
+        printf("\n");
+    }
+}
+
 void empilha(Pilha *pilha, int valor) {
     if (pilha->topo == pilha->capacidade - 1) {
         printf("Pilha cheia. Não é possível empilha.\n");
@@ -41,7 +54,9 @@ void vazia(Pilha *pilha) {
 
 int main() {
     Pilha minhaPilha;
+
     cria_pilha(&minhaPilha, 5);
+    imprime_pilha(&minhaPilha);
 
     empilha(&minhaPilha, 10);
     empilha(&minhaPilha, 20);
