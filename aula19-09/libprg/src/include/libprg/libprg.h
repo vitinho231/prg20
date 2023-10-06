@@ -20,9 +20,6 @@ typedef struct {
     int *valores;
     int inicio;
     int fim;
-
-
-
     int capacidade;
 }Fila;
 

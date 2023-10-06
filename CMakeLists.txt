@@ -16,4 +16,8 @@ add_executable(prg029003
         "tarefa 1/tarefa.c"
         "tarefa 2/tarefa 2.c"
         "tarefa 3/tarefa 3.c"
-        "tarefa-4 algoritmos quicksort/tarefa 4.c")
+        "tarefa-4 algoritmos quicksort/tarefa 4.c"
+        aula19-09/libprg/lista_linear.C
+        aula19-09/fila.c
+        aula19-09/libprg/menu.c
+        aula19-09/RPN.c)
