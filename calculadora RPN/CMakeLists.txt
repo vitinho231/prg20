@@ -8,4 +8,5 @@ include_directories(include/libprg2)
 
 add_executable(calculadora_RPN
         include/libprg2/libprg2.h
-        include/RPN.c)
+        include/RPN.c
+        include/libprg2/Pilha.c)
