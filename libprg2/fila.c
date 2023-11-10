@@ -1,43 +1,40 @@
+#include "libprg2.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "libprg.h"
+
+// Implementações das funções
 
 void cria_fila(Fila *fila, int capacidade) {
-    fila->valores = (int *)malloc(capacidade * sizeof(int));
-    fila->inicio = fila->fim = -1;
+    fila->elementos = (int *)malloc(sizeof(int) * capacidade);
     fila->capacidade = capacidade;
+    fila->inicio = fila->tamanho = 0;
 }
 
-void imprime_fila(Fila *fila) {
-    if (fila->inicio == -1) {
-        printf("Fila vazia.\n");
-        return;
+void imprime_fila(const Fila *fila) {
+    int i;
+    for (i = 0; i < fila->tamanho; i++) {
+        printf("%d ", fila->elementos[(fila->inicio + i) % fila->capacidade]);
     }
-
-    for (int i = fila->inicio; i <= fila->fim; i++)
-        printf("%d ", fila->valores[i]);
     printf("\n");
 }
 
 int enfileira(Fila *fila, int elemento) {
-    if (fila->fim == fila->capacidade - 1)
-        return -1; // Código de erro: fila cheia
+    if (fila->tamanho == fila->capacidade) {
+        return -1; // Fila cheia
+    }
 
-    if (fila->inicio == -1)
-        fila->inicio = 0;
-
-    fila->valores[++fila->fim] = elemento;
-    return 0; // Operação bem-sucedida
+    fila->elementos[(fila->inicio + fila->tamanho) % fila->capacidade] = elemento;
+    fila->tamanho++;
+    return 0; // Sucesso
 }
 
 int desenfileirar(Fila *fila) {
-    if (fila->inicio == -1)
-        return -1; // Código de erro: fila vazia
+    if (fila->tamanho == 0) {
+        return -1; // Fila vazia
+    }
 
-    int removido = fila->valores[fila->inicio++];
-
-    if (fila->inicio > fila->fim)
-        fila->inicio = fila->fim = -1; // Resetar a fila
-
-    return removido;
+    int elemento = fila->elementos[fila->inicio];
+    fila->inicio = (fila->inicio + 1) % fila->capacidade;
+    fila->tamanho--;
+    return elemento;
 }

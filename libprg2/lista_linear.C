@@ -1,63 +1,62 @@
+#include "libprg2.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "libprg.h"
 
-void inicializaLista(struct Lista* lista, int tamanhoMax) {
-    lista->elementos = (int*)malloc(sizeof(int) * tamanhoMax);
+// Implementações das funções
+
+void inicializaLista(Lista *lista, int tamanhoMax) {
+    lista->elementos = (int *)malloc(sizeof(int) * tamanhoMax);
     lista->tamanho = 0;
 }
 
-int insereElemento(struct Lista* lista, int valor) {
-    const int TAMANHO_MAX = 0;
+int insereElemento(Lista *lista, int valor) {
     if (lista->tamanho >= TAMANHO_MAX) {
-        return 0; // Lista está cheia, não é possível inserir mais elementos
+        return -1; // Lista cheia
     }
 
     lista->elementos[lista->tamanho] = valor;
     lista->tamanho++;
-    return 1; // Inserção bem-sucedida
+    return 0; // Sucesso
 }
 
-int removeElemento(struct Lista* lista, int valor) {
-    int encontrado = 0;
+int removeElemento(Lista *lista, int valor) {
     int i;
-
     for (i = 0; i < lista->tamanho; i++) {
         if (lista->elementos[i] == valor) {
-            encontrado = 1;
             break;
         }
     }
 
-    if (encontrado) {
-        for (int j = i; j < lista->tamanho - 1; j++) {
-            lista->elementos[j] = lista->elementos[j + 1];
-        }
-        lista->tamanho--;
-        return 1; // Remoção bem-sucedida
-    } else {
-        return 0; // Valor não encontrado na lista
+    if (i == lista->tamanho) {
+        return -1; // Elemento não encontrado
     }
+
+    for (int j = i; j < lista->tamanho - 1; j++) {
+        lista->elementos[j] = lista->elementos[j + 1];
+    }
+
+    lista->tamanho--;
+    return 0; // Sucesso
 }
 
-void exibeLista(struct Lista* lista) {
-    printf("Elementos da lista:\n");
+void exibeLista(const Lista *lista) {
     for (int i = 0; i < lista->tamanho; i++) {
         printf("%d ", lista->elementos[i]);
     }
     printf("\n");
 }
 
-int buscaLinear(struct Lista* lista, int valor) {
+int buscaLinear(const Lista *lista, int valor) {
     for (int i = 0; i < lista->tamanho; i++) {
         if (lista->elementos[i] == valor) {
-            return i; // Valor encontrado, retorna a posição
+            return i; // Índice do elemento encontrado
         }
     }
-    return -1; // Valor não encontrado na lista
+
+    return -1; // Elemento não encontrado
 }
 
-int buscaBinariaIterativa(struct Lista* lista, int valor) {
+int buscaBinariaIterativa(const Lista *lista, int valor) {
     int inicio = 0;
     int fim = lista->tamanho - 1;
 
@@ -65,7 +64,7 @@ int buscaBinariaIterativa(struct Lista* lista, int valor) {
         int meio = (inicio + fim) / 2;
 
         if (lista->elementos[meio] == valor) {
-            return meio; // Valor encontrado, retorna a posição
+            return meio; // Elemento encontrado
         } else if (lista->elementos[meio] < valor) {
             inicio = meio + 1;
         } else {
@@ -73,18 +72,18 @@ int buscaBinariaIterativa(struct Lista* lista, int valor) {
         }
     }
 
-    return -1; // Valor não encontrado na lista
+    return -1; // Elemento não encontrado
 }
 
-int buscaBinariaRecursiva(struct Lista* lista, int valor, int inicio, int fim) {
+int buscaBinariaRecursiva(const Lista *lista, int valor, int inicio, int fim) {
     if (inicio > fim) {
-        return -1; // Valor não encontrado na lista
+        return -1; // Elemento não encontrado
     }
 
     int meio = (inicio + fim) / 2;
 
     if (lista->elementos[meio] == valor) {
-        return meio; // Valor encontrado, retorna a posição
+        return meio; // Elemento encontrado
     } else if (lista->elementos[meio] < valor) {
         return buscaBinariaRecursiva(lista, valor, meio + 1, fim);
     } else {

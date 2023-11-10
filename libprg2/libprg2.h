@@ -1,16 +1,25 @@
-//
-// Created by aluno on 20/10/23.
-//
-
 #ifndef PRG029003_LIBPRG2_H
 #define PRG029003_LIBPRG2_H
+
+#define TAMANHO_MAX 100 // Ou o valor desejado
+typedef struct {
+    int *elementos;
+    int capacidade;
+    int inicio;
+    int tamanho;
+} Fila;
+
+void cria_fila(Fila *fila, int capacidade);
+void imprime_fila(const Fila *fila);
+int enfileira(Fila *fila, int elemento);
+int desenfileirar(Fila *fila);
+
 
 typedef struct {
     float *elementos;
     int tamanho;
     int capacidade;
 } Pilha;
-
 
 void cria_pilha(Pilha *pilha, int capacidade);
 void imprime_pilha(const Pilha *pilha);
@@ -20,31 +29,83 @@ void tamanho(const Pilha *pilha);
 void vazia(const Pilha *pilha);
 
 typedef struct {
-    int* elementos;
+    int *elementos;
     int tamanho;
 } Lista;
 
-void inicializaLista(struct Lista* lista, int tamanhoMax);
-int insereElemento(struct Lista* lista, int valor);
-int removeElemento(struct Lista* lista, int valor);
-void exibeLista(struct Lista* lista);
-int buscaLinear(struct Lista* lista, int valor);
-int buscaBinariaIterativa(struct Lista* lista, int valor);
-int buscaBinariaRecursiva(struct Lista* lista, int valor, int inicio, int fim);
+void inicializaLista(Lista *lista, int tamanhoMax);
+int insereElemento(Lista *lista, int valor);
+int removeElemento(Lista *lista, int valor);
+void exibeLista(const Lista *lista);
+int buscaLinear(const Lista *lista, int valor);
+int buscaBinariaIterativa(const Lista *lista, int valor);
+int buscaBinariaRecursiva(const Lista *lista, int valor, int inicio, int fim);
+
+// Protótipos das funções
+void inicializaLista(Lista *lista, int tamanhoMax);
+int insereElemento(Lista *lista, int valor);
+int removeElemento(Lista *lista, int valor);
+void exibeLista(const Lista *lista);
+int buscaLinear(const Lista *lista, int valor);
+int buscaBinariaIterativa(const Lista *lista, int valor);
+int buscaBinariaRecursiva(const Lista *lista, int valor, int inicio, int fim);
+
+typedef struct Node {
+    int data;
+    struct Node *next;
+} Node;
 
 typedef struct {
-    int *valores;
-    int inicio;
-    int fim;
-    int capacidade;
-}Fila;
+    Node *head;
+} ListaCircular;
 
-void cria_fila(Fila *fila, int capacidade);
-void imprime_fila(Fila *fila);
-int enfileirar(Fila *fila); //retorna código de erro.
-int desenfileirar(Fila *fila); //retorna código de erro.
+void inicializaListaCircular(ListaCircular *lista);
+void insereElementoCircular(ListaCircular *lista, int valor);
+void removeElementoCircular(ListaCircular *lista, int valor);
+void exibeListaCircular(ListaCircular *lista);
 
+typedef struct DNode {
+    int data;
+    struct DNode *prev;
+    struct DNode *next;
+} DNode;
 
+typedef struct {
+    DNode *head;
+} ListaDuplaCircular;
 
+void inicializaListaDuplaCircular(ListaDuplaCircular *lista);
+void insereElementoDuplaCircular(ListaDuplaCircular *lista, int valor);
+void removeElementoDuplaCircular(ListaDuplaCircular *lista, int valor);
+void exibeListaDuplaCircular(ListaDuplaCircular *lista);
 
-#endif //PRG029003_LIBPRG2_H
+typedef struct QNode {
+    int data;
+    struct QNode *next;
+} QNode;
+
+typedef struct {
+    QNode *front;
+    QNode *rear;
+} FilaLista;
+
+void criaFilaLista(FilaLista *fila);
+void enfileirarLista(FilaLista *fila, int valor);
+int desenfileirarLista(FilaLista *fila);
+void imprimeFilaLista(const FilaLista *fila);
+
+typedef struct SNode {
+    int data;
+    struct SNode *next;
+} SNode;
+
+typedef struct {
+    SNode *top;
+} PilhaLista;
+
+void criaPilhaLista(PilhaLista *pilha);
+void empilharLista(PilhaLista *pilha, int valor);
+int desempilharLista(PilhaLista *pilha);
+void imprimePilhaLista(const PilhaLista *pilha);
+
+#endif // PRG029003_LIBPRG2_H
