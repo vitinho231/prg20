@@ -42,6 +42,14 @@ int buscaBinariaIterativa(const Lista *lista, int valor);
 int buscaBinariaRecursiva(const Lista *lista, int valor, int inicio, int fim);
 
 
+ttypedef struct No {
+    int dado;
+    struct No* proximo;
+} No;
 
+No* criarNo(int valor);
+void inserirNoInicio(No** cabeca, int valor);
+void exibirLista(No* cabeca);
+void liberarLista(No* cabeca);
 
 #endif // PRG029003_LIBPRG2_H
