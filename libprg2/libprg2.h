@@ -52,4 +52,12 @@ void inserirNoInicio(No** cabeca, int valor);
 void exibirLista(No* cabeca);
 void liberarLista(No* cabeca);
 
+struct Node {
+    char username[50];
+    char password[50];
+    char fullName[100];
+    struct Node *next;
+};
+
+
 #endif // PRG029003_LIBPRG2_H
