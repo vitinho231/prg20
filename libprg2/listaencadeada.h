@@ -1,22 +1,15 @@
+// libprg2/listaencadeada.h
+
 #ifndef LISTAENCADEADA_H
 #define LISTAENCADEADA_H
 
-struct Node {
-    char username[50];
-    char password[50];
-    char fullName[100];
-    struct Node *next;
+struct Nodo {
+    char login[MAX_LOGIN];
+    char senha[MAX_SENHA];
+    struct Nodo* proximo;
 };
 
-typedef struct {
-    struct Node *head;
-} ListaEncadeada;
+void inserirOrdenado(struct Nodo** lista, const char* login, const char* senha);
+void imprimirLista(const struct Nodo* lista);
 
-void inicializaLista(ListaEncadeada *lista);
-void insereOrdenado(ListaEncadeada *lista, const char *username, const char *password);
-void imprimeLista(const ListaEncadeada *lista);
-int procuraUsuario(const ListaEncadeada *lista, const char *username, const char *password);
-const char *obtemNome(const ListaEncadeada *lista, const char *username);
-void liberaLista(ListaEncadeada *lista);
-
-#endif
+#endif // LISTAENCADEADA_H

@@ -1,74 +1,49 @@
 #include <stdio.h>
 #include <string.h>
-#include <sys/time.h>
+#include <time.h>
 #include "libprg2/listaencadeada.h"
 
-void para_demorar() {
-    printf("Pressione ENTER para prosseguir\n");
-    while (getchar() != '\n');
-}
-
-struct User {
-    char username[50];
-    char password[50];
-    char fullName[100];
-};
-
 int main() {
-    FILE *file = fopen("database.dat", "r");
-    if (file == NULL) {
-        perror("Erro ao abrir o arquivo");
+    char loginDigitado[MAX_LOGIN];
+    char senhaDigitada[MAX_SENHA];
+
+    struct Nodo* listaOrdenada = NULL;
+
+    FILE* arquivo = fopen("database.dat", "rb");
+    if (!arquivo) {
+        fprintf(stderr, "Erro ao abrir o arquivo de usuários.\n");
         return 1;
     }
 
-    struct timeval inicio, fim;
-    gettimeofday(&inicio, NULL);
-
-    para_demorar();
-
-    gettimeofday(&fim, NULL);
-
-    long seg = fim.tv_sec - inicio.tv_sec;
-    long mseg = fim.tv_usec - inicio.tv_usec;
-    double tempo_total = seg + mseg * 1e-6;
-
-    printf("Tempo gasto: %f segundos.\n", tempo_total);
-
-    struct User users[500];
-    for (int i = 0; i < 500; i++) {
-        fscanf(file, "%49s %49s %[^\n]", users[i].username, users[i].password, users[i].fullName);
+    // Lendo os dados do arquivo e construindo a lista ordenada
+    while (fread(&usuarioEncontrado, sizeof(struct Usuario), 1, arquivo)) {
+        inserirOrdenado(&listaOrdenada, usuarioEncontrado.login, usuarioEncontrado.senha);
     }
 
-    fclose(file);
+    fclose(arquivo);
 
-    char inputUsername[50];
-    char inputPassword[50];
-    printf("Login: ");
-    scanf("%49s", inputUsername);
-    printf("Senha: ");
-    scanf("%49s", inputPassword);
+    // Medindo o tempo de execução
+    clock_t inicio = clock();
 
-    // Criando lista encadeada e adicionando logins a ela
-    ListaEncadeada lista;
-    inicializaLista(&lista);
+    printf("Digite o login: ");
+    scanf("%9s", loginDigitado);
 
-    for (int i = 0; i < 500; i++) {
-        insereOrdenado(&lista, users[i].username, users[i].password);
-    }
+    printf("Digite a senha: ");
+    scanf("%9s", senhaDigitada);
 
-    // Imprimindo lista ordenada
-    imprimeLista(&lista);
-
-    // Procurando usuário na lista ordenada
-    if (procuraUsuario(&lista, inputUsername, inputPassword)) {
-        printf("Bem-vindo, %s!\n", obtemNome(&lista, inputUsername));
+    if (buscarUsuario(loginDigitado, senhaDigitada, &usuarioEncontrado)) {
+        printf("Bem-vindo, %s!\n", usuarioEncontrado.nome);
     } else {
-        printf("Credenciais inválidas.\n");
+        printf("Login ou senha incorretos.\n");
     }
 
-    // Liberando memória alocada para a lista encadeada
-    liberaLista(&lista);
+    // Imprimindo a lista ordenada
+    printf("\nLista Ordenada:\n");
+    imprimirLista(listaOrdenada);
+
+    clock_t fim = clock();
+    double tempoExecucao = (double)(fim - inicio) / CLOCKS_PER_SEC;
+    printf("Tempo de execução: %f segundos.\n", tempoExecucao);
 
     return 0;
 }
-

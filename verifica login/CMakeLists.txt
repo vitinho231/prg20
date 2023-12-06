@@ -4,6 +4,7 @@ project(verifica_login C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(verifica_login
-        login_projeto.c)
+        login_projeto.c
+        libprg2/listaencadeada.c)
 
 include_directories(libprg2/listaencadeada.h)
