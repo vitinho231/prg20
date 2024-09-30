@@ -3,7 +3,7 @@
 
 int main() {
     // Abrir o arquivo de usuários em modo leitura binária
-    FILE* arquivo = fopen("/home/vitor/CLionProjects/prg029003/verifica login/database.dat", "rb");
+    FILE* arquivo = fopen("/home/vitor/CLionProjects/prg029003-C-2023/verifica login/database.dat", "rb");
     if (!arquivo) {
         perror("Erro ao abrir o arquivo de usuários"); // Mensagem de erro caso o arquivo não possa ser aberto
         return 1; // Sair do programa com código de erro

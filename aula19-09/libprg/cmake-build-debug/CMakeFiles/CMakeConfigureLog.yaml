@@ -61,8 +61,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/aluno/CLionProjects/prg029003/aula19-09/libprg/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-omC6NF"
-      binary: "/home/aluno/CLionProjects/prg029003/aula19-09/libprg/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-omC6NF"
+      source: "/home/aluno/CLionProjects/prg029003-C-2023/aula19-09/libprg/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-omC6NF"
+      binary: "/home/aluno/CLionProjects/prg029003-C-2023/aula19-09/libprg/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-omC6NF"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
     buildResult:
@@ -295,8 +295,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/aluno/CLionProjects/prg029003/aula19-09/libprg/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ewJLoF"
-      binary: "/home/aluno/CLionProjects/prg029003/aula19-09/libprg/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ewJLoF"
+      source: "/home/aluno/CLionProjects/prg029003-C-2023/aula19-09/libprg/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ewJLoF"
+      binary: "/home/aluno/CLionProjects/prg029003-C-2023/aula19-09/libprg/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ewJLoF"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
     buildResult:
